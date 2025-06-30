@@ -14,7 +14,8 @@ import {
   Truck,
   MessageSquare,
   FileText,
-  LogOut
+  LogOut,
+  MapPin
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -28,6 +29,7 @@ const sidebarItems = [
   { href: '/admin/customers', icon: Users, label: 'Customers' },
   { href: '/admin/categories', icon: Tag, label: 'Categories' },
   { href: '/admin/inventory', icon: Truck, label: 'Inventory' },
+  { href: '/admin/delivery-settings', icon: MapPin, label: 'Delivery Settings' },
   { href: '/admin/reviews', icon: MessageSquare, label: 'Reviews' },
   { href: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
   { href: '/admin/reports', icon: FileText, label: 'Reports' },
