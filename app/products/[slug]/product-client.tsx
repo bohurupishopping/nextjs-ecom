@@ -4,26 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  Heart, 
-  Share2, 
-  ShoppingCart, 
-  Star, 
-  Plus, 
-  Minus,
-  Truck,
-  Shield,
-  RotateCcw,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  Zoom,
-  Package,
-  Clock,
-  MapPin,
-  Info
-} from 'lucide-react';
+import { ArrowLeft, Heart, Share2, ShoppingCart, Star, Plus, Minus, Truck, Shield, RotateCcw, Check, ChevronLeft, ChevronRight, ZoomIn as Zoom, Package, Clock, MapPin, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
