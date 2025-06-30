@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { ProductCard } from '@/components/product-card';
+import { DeliveryEstimator } from '@/components/delivery-estimator';
 import { useAuth } from '@/lib/auth';
 import { useCartStore } from '@/lib/stores/cart-store';
 import { supabase, Product, ProductVariant } from '@/lib/supabase';
@@ -523,32 +524,8 @@ export function ProductClient({ initialProduct }: { initialProduct: Product | nu
               </Button>
             </div>
 
-            {/* Delivery Information */}
-            <Card>
-              <CardContent className="p-4 space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="font-medium">Free Delivery to</span>
-                  <span className="text-green-600 font-medium">Antisara, Hooghly</span>
-                  <Button variant="link" className="p-0 h-auto text-blue-600">
-                    Check another Pincode
-                  </Button>
-                </div>
-                
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Clock className="h-4 w-4" />
-                  <span>Estimated delivery in 2-3 days</span>
-                </div>
-                
-                <div className="flex items-center gap-3 text-sm">
-                  <Truck className="h-4 w-4 text-blue-600" />
-                  <span>Expected between</span>
-                  <span className="font-medium">July 2, 2025</span>
-                  <span>and</span>
-                  <span className="font-medium">July 3, 2025</span>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Delivery Information - Using the new component */}
+            <DeliveryEstimator />
 
             {/* Additional Info */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
