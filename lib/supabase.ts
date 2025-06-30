@@ -19,6 +19,10 @@ export interface Product {
   is_active: boolean;
   is_featured: boolean;
   inventory_quantity: number;
+  weight?: number | null;
+  dimensions?: string | null;
+  requires_shipping?: boolean;
+  taxable?: boolean;
   created_at: string;
   updated_at: string;
   category?: Category;
@@ -49,9 +53,12 @@ export interface ProductVariant {
   product_id: string;
   name: string;
   price: number;
+  compare_price?: number;
   sku: string;
   inventory_quantity: number;
   is_active: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface CartItem {

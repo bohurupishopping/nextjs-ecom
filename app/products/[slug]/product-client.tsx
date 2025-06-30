@@ -170,14 +170,14 @@ export function ProductClient({ initialProduct }: { initialProduct: Product | nu
     }
   };
 
-  const currentPrice = selectedVariant?.price || product?.price || 0;
-  const comparePrice = selectedVariant?.compare_price || product?.compare_price;
+  const currentPrice = selectedVariant?.price ?? product?.price ?? 0;
+  const comparePrice = selectedVariant?.compare_price ?? product?.compare_price;
   const discountPercentage = comparePrice && comparePrice > currentPrice
     ? Math.round(((comparePrice - currentPrice) / comparePrice) * 100)
     : 0;
 
-  const isInStock = (selectedVariant?.inventory_quantity || product?.inventory_quantity || 0) > 0;
-  const stockLevel = selectedVariant?.inventory_quantity || product?.inventory_quantity || 0;
+  const isInStock = (selectedVariant?.inventory_quantity ?? product?.inventory_quantity ?? 0) > 0;
+  const stockLevel = selectedVariant?.inventory_quantity ?? product?.inventory_quantity ?? 0;
 
   if (loading) {
     return (
@@ -595,7 +595,7 @@ export function ProductClient({ initialProduct }: { initialProduct: Product | nu
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">SKU:</span>
-                          <span>{product.sku || 'N/A'}</span>
+                          <span>{product.sku ?? 'N/A'}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Weight:</span>
@@ -603,11 +603,11 @@ export function ProductClient({ initialProduct }: { initialProduct: Product | nu
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Dimensions:</span>
-                          <span>{product.dimensions || 'N/A'}</span>
+                          <span>{product.dimensions ?? 'N/A'}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Category:</span>
-                          <span>{product.category?.name || 'Uncategorized'}</span>
+                          <span>{product.category?.name ?? 'Uncategorized'}</span>
                         </div>
                       </div>
                     </div>
@@ -617,11 +617,11 @@ export function ProductClient({ initialProduct }: { initialProduct: Product | nu
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Shipping:</span>
-                          <span>{product.requires_shipping ? 'Required' : 'Not Required'}</span>
+                          <span>{product.requires_shipping !== false ? 'Required' : 'Not Required'}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Taxable:</span>
-                          <span>{product.taxable ? 'Yes' : 'No'}</span>
+                          <span>{product.taxable !== false ? 'Yes' : 'No'}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Return Policy:</span>
