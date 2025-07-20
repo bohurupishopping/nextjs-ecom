@@ -1,8 +1,3 @@
-// Generate static params for build
-export async function generateStaticParams() {
-  return [];
-}
-
 'use client';
 
 import { useState, useEffect } from 'react';
