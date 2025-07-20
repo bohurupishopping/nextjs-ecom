@@ -44,7 +44,7 @@ export default function OrdersPage() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setOrders(data || []);
+      setOrders((data || []) as Order[]);
     } catch (error) {
       console.error('Error loading orders:', error);
       toast.error('Failed to load orders');
@@ -53,7 +53,7 @@ export default function OrdersPage() {
     }
   };
 
-  const updateOrderStatus = async (orderId: string, status: string) => {
+  const updateOrderStatus = async (orderId: string, status: Order['status']) => {
     try {
       const { error } = await supabase
         .from('orders')
@@ -63,7 +63,7 @@ export default function OrdersPage() {
       if (error) throw error;
 
       setOrders(orders.map(order => 
-        order.id === orderId ? { ...order, status } : order
+        order.id === orderId ? { ...order, status } as Order : order
       ));
       
       toast.success(`Order status updated to ${status}`);
