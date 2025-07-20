@@ -36,13 +36,13 @@ export default function AnalyticsPage() {
       current: 0,
       previous: 0,
       growth: 0,
-      data: []
+      data: [] as { day: string; revenue: number }[]
     },
     orders: {
       current: 0,
       previous: 0,
       growth: 0,
-      data: []
+      data: [] as { day: string; orders: number }[]
     },
     customers: {
       current: 0,
@@ -51,9 +51,9 @@ export default function AnalyticsPage() {
     },
     products: {
       current: 0,
-      topSelling: []
+      topSelling: [] as { name: string; sales: number }[]
     },
-    categoryBreakdown: []
+    categoryBreakdown: [] as { name: string; value: number }[]
   });
 
   useEffect(() => {
@@ -117,12 +117,12 @@ export default function AnalyticsPage() {
         ? ((currentRevenueTotal - previousRevenueTotal) / previousRevenueTotal) * 100 
         : 0;
 
-      const ordersGrowth = previousRevenue?.length > 0 
-        ? ((currentRevenue?.length || 0) - previousRevenue.length) / previousRevenue.length * 100 
+      const ordersGrowth = (previousRevenue?.length || 0) > 0 
+        ? ((currentRevenue?.length || 0) - (previousRevenue?.length || 0)) / (previousRevenue?.length || 1) * 100 
         : 0;
 
-      const customersGrowth = previousCustomers?.length > 0 
-        ? ((currentCustomers?.length || 0) - previousCustomers.length) / previousCustomers.length * 100 
+      const customersGrowth = (previousCustomers?.length || 0) > 0 
+        ? ((currentCustomers?.length || 0) - (previousCustomers?.length || 0)) / (previousCustomers?.length || 1) * 100 
         : 0;
 
       // Generate sample chart data
