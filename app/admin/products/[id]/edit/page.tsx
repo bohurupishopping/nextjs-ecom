@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-
 // Generate static params for build
 export async function generateStaticParams() {
   return [];
 }
 
 'use client';
+
+import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft, Upload, X, Plus, Trash2, Save, Eye, Package } from 'lucide-react';
@@ -50,11 +50,11 @@ export default function EditProductPage() {
   const router = useRouter();
   const params = useParams();
   const productId = params.id as string;
-  
+
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
   const [categories, setCategories] = useState<Category[]>([]);
-  
+
   const [productData, setProductData] = useState({
     name: '',
     slug: '',
@@ -170,7 +170,7 @@ export default function EditProductPage() {
 
   const removeImage = async (index: number) => {
     const image = images[index];
-    
+
     // If it's an existing image, delete from database
     if (image.id) {
       try {
@@ -202,14 +202,14 @@ export default function EditProductPage() {
   };
 
   const updateVariant = (index: number, field: string, value: any) => {
-    setVariants(prev => prev.map((variant, i) => 
+    setVariants(prev => prev.map((variant, i) =>
       i === index ? { ...variant, [field]: value } : variant
     ));
   };
 
   const removeVariant = async (index: number) => {
     const variant = variants[index];
-    
+
     // If it's an existing variant, delete from database
     if (variant.id) {
       try {
@@ -376,7 +376,7 @@ export default function EditProductPage() {
                       placeholder="Enter product name"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="slug">URL Slug</Label>
                     <Input
@@ -572,7 +572,7 @@ export default function EditProductPage() {
                       Drag to reorder • First image will be the main image
                     </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {images.map((image, index) => (
                       <div key={index} className="relative group">
@@ -663,7 +663,7 @@ export default function EditProductPage() {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="space-y-2">
                             <Label>Variant Name</Label>
