@@ -1,6 +1,11 @@
-'use client';
-
 import { useState, useEffect } from 'react';
+
+// Generate static params for build
+export async function generateStaticParams() {
+  return [];
+}
+
+'use client';
 import { useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft, Upload, X, Plus, Trash2, Save, Eye, Package } from 'lucide-react';
